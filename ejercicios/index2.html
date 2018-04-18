@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
+
+
+<body> 
+
+
+	<ul id="astronautas"></ul>
+	<script src="https://d3js.org/d3.v5.min.js"></script>
+
+	<script type="text/javascript">
+		d3.json("http://api.open-notify.org/astros.json").then(function(data) {
+	var astros = d3.values(data.people);
+	d3.select("#astronautas")
+	.selectAll("li")
+	.data(astros).enter()
+	.append("li")
+	.text(function(d) { 
+		return d.name });
+    })
+	</script>
+
+</body>
+</head>
